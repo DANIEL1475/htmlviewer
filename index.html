@@ -10,8 +10,7 @@
 </head>
 <body>
   <h2>Loading ...</h2>
-  <div id="viewer"></div>
-
+  <iframe id="viewer"></iframe>
   <script>
     const params = new URLSearchParams(window.location.search);
     const fileUrl = params.get('file');
@@ -22,7 +21,7 @@
       fetch(fileUrl)
         .then(r => r.json())
         .then(data => {
-          document.getElementById('viewer').innerHTML = data.contents;
+          document.getElementById('viewer').src = data.contents;
         })
         .catch(err => {
           console.error(err);
