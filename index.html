@@ -5,12 +5,13 @@
   <title>Loader</title>
   <style>
     body {font-family: sans-serif; padding: 2rem;}
-    #viewer {width: 100%; min-height: 90vh;}
+    iframe {width: 100%; height: 90vh; border: none;}
   </style>
 </head>
 <body>
   <h2>Loading ...</h2>
   <iframe id="viewer"></iframe>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const fileUrl = params.get('file');
@@ -21,14 +22,14 @@
       fetch(fileUrl)
         .then(r => r.json())
         .then(data => {
-          const the_content = data.contents
-          const blob = new Blob([the_content], {type: 'text/html'});
+          const the_content = data.contents;
+
+          const blob = new Blob([the_content], { type: 'text/html' });
           const blobUrl = URL.createObjectURL(blob);
           document.getElementById('viewer').src = blobUrl;
         })
         .catch(err => {
           console.error(err);
-          
           document.querySelector('h2').textContent = 'Error loading content';
         });
 
