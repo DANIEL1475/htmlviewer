@@ -21,9 +21,9 @@
       document.querySelector('h5').textContent = 'Showing file: ' + fileUrl;
 
       fetch(fileUrl)
-        .then(r => r.text())
+        .then(r => r.json())
         .then(data => {
-          // const the_content = data.contents;
+          const the_content = data.contents;
 
           const blob = new Blob([the_content], { type: 'text/html' });
           const blobUrl = URL.createObjectURL(blob);
