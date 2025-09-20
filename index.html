@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Loader</title>
@@ -9,7 +9,7 @@
   </style>
 </head>
 <body>
-  <h2>Site</h2>
+  <h2>Loading ...</h2>
   <iframe id="viewer"></iframe>
 
   <script>
@@ -17,7 +17,7 @@
     const fileUrl = params.get('file');
 
     if (fileUrl) {
-      document.querySelector('h2').textContent = 'Loading File ... ' + fileUrl;
+      document.querySelector('h2').textContent = 'Showing file: ' + fileUrl;
       document.getElementById('viewer').src = fileUrl;
     } else {
       document.querySelector('h2').textContent = 'Set ?file= parameter';
