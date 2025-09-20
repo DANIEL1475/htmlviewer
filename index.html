@@ -22,7 +22,9 @@
         .then(r => r.json())
         .then(data => {
           const the_content = data.contents
-          document.getElementById('viewer').src = the_content;
+          const blob = new Blob([the_content], {type: 'text/html'});
+          const blobUrl = URL.createObjectURL(blob);
+          document.getElementById('viewer').src = blobUrl;
         })
         .catch(err => {
           console.error(err);
