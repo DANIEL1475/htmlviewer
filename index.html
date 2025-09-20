@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <title>Loader</title>
   <style>
-    body {font-family: sans-serif; padding: 2rem;}
-    iframe {width: 100%; height: 90vh; border: none;}
+    iframe {width: 100%; height: 95%; border: none;}
   </style>
 </head>
 <body>
-  <h2>Loading ...</h2>
+  <h5>Loading ...</h5>
   <iframe id="viewer"></iframe>
 
   <script>
@@ -17,7 +16,7 @@
     const fileUrl = params.get('file');
 
     if (fileUrl) {
-      document.querySelector('h2').textContent = 'Showing file: ' + fileUrl;
+      document.querySelector('h5').textContent = 'Showing file: ' + fileUrl;
 
       fetch(fileUrl)
         .then(r => r.json())
@@ -30,11 +29,11 @@
         })
         .catch(err => {
           console.error(err);
-          document.querySelector('h2').textContent = 'Error loading content';
+          document.querySelector('h5').textContent = 'Error loading content';
         });
 
     } else {
-      document.querySelector('h2').textContent = 'Set ?file= parameter';
+      document.querySelector('h5').textContent = 'Set ?file= parameter';
     }
   </script>
 </body>
