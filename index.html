@@ -21,7 +21,7 @@
     if (fileUrl) {
       document.querySelector('h5').textContent = 'Showing file: ' + fileUrl;
 
-      fetch(encodeURIComponent("https://api.allorigins.win/get?url="+fileUrl))
+      fetch("https://api.allorigins.win/get?url="+fileUrl)
         .then(r => r.json())
         .then(data => {
           const the_content = data.contents;
