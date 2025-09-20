@@ -21,10 +21,12 @@
       fetch(fileUrl)
         .then(r => r.json())
         .then(data => {
-          document.getElementById('viewer').src = data.contents;
+          const the_content = data.contents
+          document.getElementById('viewer').src = the_content;
         })
         .catch(err => {
           console.error(err);
+          
           document.querySelector('h2').textContent = 'Error loading content';
         });
 
