@@ -5,12 +5,12 @@
   <title>Loader</title>
   <style>
     body {font-family: sans-serif; padding: 2rem;}
-    iframe {width: 100%; height: 90vh; border: none;}
+    #viewer {width: 100%; min-height: 90vh; border: none;}
   </style>
 </head>
 <body>
   <h2>Loading ...</h2>
-  <iframe id="viewer"></iframe>
+  <div id="viewer"></div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -18,7 +18,17 @@
 
     if (fileUrl) {
       document.querySelector('h2').textContent = 'Showing file: ' + fileUrl;
-      document.getElementById('viewer').src = fileUrl;
+
+      fetch(fileUrl)
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('viewer').innerHTML = data.content;
+        })
+        .catch(err => {
+          console.error(err);
+          document.querySelector('h2').textContent = 'Error';
+        });
+
     } else {
       document.querySelector('h2').textContent = 'Set ?file= parameter';
     }
